@@ -69,7 +69,7 @@ public class AminoAcidFrame extends AmAcidFrame {
 		JButton polButton = frame.addButton(frame, "Polar", 150, 25);
 		JButton aromButton = frame.addButton(frame, "Aromatic", 270, 25);
 
-		// обработка нажатия
+		// обработка нажатия 
 		class NonPolListener implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				nonPolPane.setVisible(true);
