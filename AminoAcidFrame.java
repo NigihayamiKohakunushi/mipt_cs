@@ -1,106 +1,104 @@
-public class AminoAcidFrame {
+package project;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import Matrix.Main;
+
+public class AminoAcidFrame extends AmAcidFrame {
+
+	public AminoAcidFrame() {
+	}
 
 	public static void createGUI() {
 
 		// Main frame
-		JFrame frame = new JFrame("Информация об аминокислотах");
+		final AmAcidFrame frame = new AmAcidFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1000, 700));
-		frame.getContentPane().setBackground(Color.WHITE);
-		// JFrame.setDefaultLookAndFeelDecorated(true);
-		// Lys
-		/*
-		 * JLabel labelLys = new JLabel("Lysine");
-		 * frame.getContentPane().add(labelLys); labelLys.setSize(100, 100);
-		 * labelLys.setLocation(250, 0); frame.add(labelLys); JPanel
-		 * imagePane1Lys = new JPanel(); JLabel imageLabelLys = new JLabel(new
-		 * ImageIcon("lysine.jpg")); imagePane1Lys.add(imageLabelLys);
-		 * imageLabelLys.setSize(100, 163);
-		 * imageLabelLys.setBackground(Color.GRAY);
-		 * imageLabelLys.setLocation(220, 50); frame.add(imageLabelLys);
-		 */
+		frame.setPreferredSize(new Dimension(1000, 650));
+		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		JFrame.setDefaultLookAndFeelDecorated(true);
 
-		// Gly
-		JLabel labelGly = new JLabel("Glycine");
-		frame.getContentPane().add(labelGly);
-		labelGly.setSize(100, 100);
-		labelGly.setLocation(100, 0);
-		frame.add(labelGly);
-		JPanel imagePane1Gly = new JPanel();
-		JLabel imageLabelGly = new JLabel(new ImageIcon("glycine.jpg"));
-		imagePane1Gly.add(imageLabelGly);
-		imageLabelGly.setSize(200, 200);
-		imageLabelGly.setLocation(20, 45);
-		frame.add(imageLabelGly);
+		// Info Pane
+		InfoPane infoPane = new InfoPane();
+		infoPane.setBackground(Color.WHITE);
+		infoPane.setSize(200, 400);
+		infoPane.setLocation(760, 150);
+		infoPane.setLayout(null);
+		frame.add(infoPane);
+		JLabel labelInf = new JLabel("Amino acid info");
+		labelInf.setSize(200, 20);
+		labelInf.setLocation(765, 120);
+		frame.add(labelInf);
 
-		// Ala
-		JLabel labelAla = new JLabel("Alanine");
-		frame.getContentPane().add(labelAla);
-		labelAla.setSize(100, 100);
-		labelAla.setLocation(310, 0);
-		frame.add(labelAla);
-		JPanel imagePane1Ala = new JPanel();
-		JLabel imageLabelAla = new JLabel(new ImageIcon("alanine.jpg"));
-		imagePane1Ala.add(imageLabelAla);
-		imageLabelAla.setSize(200, 200);
-		imageLabelAla.setLocation(220, 50);
-		frame.add(imageLabelAla);
+		JTextArea acidName = new JTextArea("kkk");
+		acidName.setSize(150, 20);
+		acidName.setLocation(765, 220);
+		acidName.setBackground(Color.GRAY);
+		acidName.setVisible(true);
+		infoPane.add(acidName);
 
-		// Val
-		JLabel labelVal = new JLabel("Valine");
-		frame.getContentPane().add(labelAla);
-		labelVal.setSize(100, 100);
-		labelVal.setLocation(510, 0);
-		frame.add(labelVal);
-		JPanel imagePane1Val = new JPanel();
-		JLabel imageLabelVal = new JLabel(new ImageIcon("valine.jpg"));
-		imagePane1Ala.add(imageLabelVal);
-		imageLabelVal.setSize(200, 200);
-		imageLabelVal.setLocation(420, 50);
-		frame.add(imageLabelVal);
+		// NONPOLAR PANE
 
-		// Leu
-		JLabel labelLeu = new JLabel("Leucine");
-		frame.getContentPane().add(labelAla);
-		labelLeu.setSize(100, 100);
-		labelLeu.setLocation(100, 200);
-		frame.add(labelLeu);
-		JPanel imagePane1Leu = new JPanel();
-		JLabel imageLabelLeu = new JLabel(new ImageIcon("leucine.jpg"));
-		imageLabelLeu.setSize(200, 200);
-		imageLabelLeu.setLocation(20, 250);
-		frame.add(imageLabelLeu);
+		final AmAcidPane nonPolPane = frame.addAmAcidPane(frame);
+		nonPolPane.addAmAcid1(nonPolPane, infoPane, "Glycine", "glycine.jpg");
+		nonPolPane.addAmAcid2(nonPolPane, "Alanine", "alanine.jpg");
+		nonPolPane.addAmAcid3(nonPolPane, "Valine", "valine.jpg");
+		nonPolPane.addAmAcid4(nonPolPane, "Leucine", "leucine.jpg");
+		nonPolPane.addAmAcid5(nonPolPane, "Methionine", "methionine.jpg");
+		nonPolPane.addAmAcid6(nonPolPane, "Isoleucine", "isoleucine.jpg");
 
-		// Met
-		JLabel labelMet = new JLabel("Methionine");
-		frame.getContentPane().add(labelMet);
-		labelMet.setSize(100, 100);
-		labelMet.setLocation(310, 200);
-		frame.add(labelMet);
-		JPanel imagePane1Met = new JPanel();
-		JLabel imageLabelMet = new JLabel(new ImageIcon("methionine.jpg"));
-		imageLabelMet.setSize(200, 200);
-		imageLabelMet.setLocation(220, 265);
-		frame.add(imageLabelMet);
+		// Polar pane
+		final AmAcidPane polPane = frame.addAmAcidPane(frame);
+		polPane.addAmAcid1(polPane, infoPane, "Serine", "ser.jpg");
+		polPane.addAmAcid2(polPane, "Theronine", "thr.jpg");
+		polPane.addAmAcid3(polPane, "Cysteine", "cys.jpg");
+		polPane.addAmAcid4(polPane, "Proline", "pro.jpg");
+		polPane.addAmAcid5(polPane, "Asparagine", "asn.jpg");
+		polPane.addAmAcid6(polPane, "Glutamine", "gln.jpg");
 
-		// Ile
-		JLabel labelIle = new JLabel("Isoleucine");
-		frame.getContentPane().add(labelIle);
-		labelIle.setSize(100, 100);
-		labelIle.setLocation(500, 210);
-		frame.add(labelIle);
-		JPanel imagePane1Ile = new JPanel();
-		JLabel imageLabelIle = new JLabel(new ImageIcon("isoleucine.jpg"));
-		imageLabelIle.setSize(200, 200);
-		imageLabelIle.setLocation(420, 265);
-		frame.add(imageLabelIle);
-		/*
-		 * imagePane1Ile.addMouseListener(new MyMouseListener());
-		 * 
-		 * JLabel eventLabel = new JLabel("isoleucine.jpg");
-		 * labelIle.setSize(100, 100); labelIle.setLocation(600, 500);
-		 */
-		frame.add(labelIle);
+		final AmAcidPane aromPane = frame.addAmAcidPane(frame);
+		aromPane.addAmAcid1(aromPane, infoPane, "Phenylalanine", "phe.jpg");
+		aromPane.addAmAcid2(aromPane, "Tyrosine", "tyr.jpg");
+		aromPane.addAmAcid3(aromPane, "Tryptophan", "trp.jpg");
+
+		// Buttons
+		JButton nonPButton = frame.addButton(frame, "Nonpolar", 30, 25);
+		JButton polButton = frame.addButton(frame, "Polar", 150, 25);
+		JButton aromButton = frame.addButton(frame, "Aromatic", 270, 25);
+
+		// обработка нажатия
+		class NonPolListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				nonPolPane.setVisible(true);
+				polPane.setVisible(false);
+				aromPane.setVisible(false);
+			}
+		}
+		ActionListener nonPolListener = new NonPolListener();
+		nonPButton.addActionListener(nonPolListener);
+
+		class PolListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				polPane.setVisible(true);
+				nonPolPane.setVisible(false);
+				aromPane.setVisible(false);
+			}
+		}
+		ActionListener polListener = new PolListener();
+		polButton.addActionListener(polListener);
+
+		class AromListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				aromPane.setVisible(true);
+				polPane.setVisible(false);
+				nonPolPane.setVisible(false);
+			}
+		}
+		ActionListener aromListener = new AromListener();
+		aromButton.addActionListener(aromListener);
 
 		frame.setLayout(null);
 		frame.pack();
