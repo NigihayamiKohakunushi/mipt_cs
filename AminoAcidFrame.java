@@ -5,32 +5,34 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import Matrix.Main;
-
+@SuppressWarnings("serial")
 public class AminoAcidFrame extends AmAcidFrame {
 
 	public AminoAcidFrame() {
+		createGUI1();
 	}
 
-	public static void createGUI() {
+	public static void createGUI1() {
 
 		// Main frame
 		final AmAcidFrame frame = new AmAcidFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(1000, 650));
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frame.setVisible(true);
 		JFrame.setDefaultLookAndFeelDecorated(true);
+		frame.setLayout(null);
 
 		// Info Pane
 		InfoPane infoPane = new InfoPane();
 		infoPane.setBackground(Color.WHITE);
-		infoPane.setSize(200, 400);
-		infoPane.setLocation(760, 150);
+		infoPane.setSize(250, 450);
+		infoPane.setLocation(710, 100);
 		infoPane.setLayout(null);
 		frame.add(infoPane);
 		JLabel labelInf = new JLabel("Amino acid info");
 		labelInf.setSize(200, 20);
-		labelInf.setLocation(765, 120);
+		labelInf.setLocation(780, 72);
 		frame.add(labelInf);
 
 		JTextArea acidName = new JTextArea("kkk");
@@ -40,41 +42,84 @@ public class AminoAcidFrame extends AmAcidFrame {
 		acidName.setVisible(true);
 		infoPane.add(acidName);
 
-		// NONPOLAR PANE
-
 		final AmAcidPane nonPolPane = frame.addAmAcidPane(frame);
-		nonPolPane.addAmAcid1(nonPolPane, infoPane, "Glycine", "glycine.jpg");
-		nonPolPane.addAmAcid2(nonPolPane, "Alanine", "alanine.jpg");
-		nonPolPane.addAmAcid3(nonPolPane, "Valine", "valine.jpg");
-		nonPolPane.addAmAcid4(nonPolPane, "Leucine", "leucine.jpg");
-		nonPolPane.addAmAcid5(nonPolPane, "Methionine", "methionine.jpg");
-		nonPolPane.addAmAcid6(nonPolPane, "Isoleucine", "isoleucine.jpg");
+		nonPolPane.addAmAcid1(nonPolPane, infoPane, "Glycine", "glycine.jpg",
+				"glycine.txt");
+		nonPolPane.addAmAcid2(nonPolPane, infoPane, "Alanine", "alanine.jpg",
+				"alanine.txt");
+		nonPolPane.addAmAcid3(nonPolPane, infoPane, "Valine", "valine.jpg",
+				"valine.txt");
+		nonPolPane.addAmAcid4(nonPolPane, infoPane, "Leucine", "leucine.jpg",
+				"leucine.txt");
+		nonPolPane.addAmAcid5(nonPolPane, infoPane, "Methionine",
+				"methionine.jpg", "methionine.txt");
+		nonPolPane.addAmAcid6(nonPolPane, infoPane, "Isoleucine",
+				"isoleucine.jpg", "isoleucine.txt");
 
-		// Polar pane
 		final AmAcidPane polPane = frame.addAmAcidPane(frame);
-		polPane.addAmAcid1(polPane, infoPane, "Serine", "ser.jpg");
-		polPane.addAmAcid2(polPane, "Theronine", "thr.jpg");
-		polPane.addAmAcid3(polPane, "Cysteine", "cys.jpg");
-		polPane.addAmAcid4(polPane, "Proline", "pro.jpg");
-		polPane.addAmAcid5(polPane, "Asparagine", "asn.jpg");
-		polPane.addAmAcid6(polPane, "Glutamine", "gln.jpg");
+		polPane.addAmAcid1(polPane, infoPane, "Serine", "serine.jpg",
+				"serine.txt");
+		polPane.addAmAcid2(polPane, infoPane, "Theronine", "threonine.jpg",
+				"threonine.txt");
+		polPane.addAmAcid3(polPane, infoPane, "Cysteine", "cysteine.jpg",
+				"cysteine.txt");
+		polPane.addAmAcid4(polPane, infoPane, "Proline", "proline.jpg",
+				"proline.txt");
+		polPane.addAmAcid5(polPane, infoPane, "Asparagine", "asparagine.jpg",
+				"asparagine.txt");
+		polPane.addAmAcid6(polPane, infoPane, "Glutamine", "glutamine.jpg",
+				"glutamine.txt");
 
 		final AmAcidPane aromPane = frame.addAmAcidPane(frame);
-		aromPane.addAmAcid1(aromPane, infoPane, "Phenylalanine", "phe.jpg");
-		aromPane.addAmAcid2(aromPane, "Tyrosine", "tyr.jpg");
-		aromPane.addAmAcid3(aromPane, "Tryptophan", "trp.jpg");
+		aromPane.addAmAcid1(aromPane, infoPane, "Phenylalanine",
+				"phenylalanine.jpg", "phenylalanine.txt");
+		aromPane.addAmAcid2(aromPane, infoPane, "Tyrosine", "tyrosine.jpg",
+				"tyrosine.txt");
+		aromPane.addAmAcid3(aromPane, infoPane, "Tryptophan",
+				"tryptophane.jpg", "tryptophane.txt");
+
+		final AmAcidPane posChPane = frame.addAmAcidPane(frame);
+		posChPane.addAmAcid1(posChPane, infoPane, "Lysine", "lysine.jpg",
+				"lysine.txt");
+		posChPane.addAmAcid2(posChPane, infoPane, "Arginine", "arginine.jpg",
+				"arginine.txt");
+		posChPane.addAmAcid3(posChPane, infoPane, "Histidine", "histidine.jpg",
+				"histidine.txt");
+
+		final AmAcidPane negChPane = frame.addAmAcidPane(frame);
+		negChPane.addAmAcid1(negChPane, infoPane, "Aspartate", "aspartate.jpg",
+				"aspartate.txt");
+		negChPane.addAmAcid2(negChPane, infoPane, "Glutamine", "glutamine.jpg",
+				"glutamine.txt");
 
 		// Buttons
 		JButton nonPButton = frame.addButton(frame, "Nonpolar", 30, 25);
 		JButton polButton = frame.addButton(frame, "Polar", 150, 25);
 		JButton aromButton = frame.addButton(frame, "Aromatic", 270, 25);
+		JButton posChButton = frame.addButton(frame, "Pos. Ch", 390, 25);
+		JButton negChButton = frame.addButton(frame, "Neg. Ch", 510, 25);
+		
+		JButton codButton = new JButton("Codon Info");
+		codButton.setSize(150, 35);
+		codButton.setLocation(760, 562);
+		frame.add(codButton);
 
-		// обработка нажатия 
+		class CodListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				// createGUI2();
+				// переход в другой JFrame
+			}
+		}
+		ActionListener codListener = new CodListener();
+		codButton.addActionListener(codListener);
+		
 		class NonPolListener implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				nonPolPane.setVisible(true);
 				polPane.setVisible(false);
 				aromPane.setVisible(false);
+				negChPane.setVisible(false);
+				posChPane.setVisible(false);
 			}
 		}
 		ActionListener nonPolListener = new NonPolListener();
@@ -85,6 +130,8 @@ public class AminoAcidFrame extends AmAcidFrame {
 				polPane.setVisible(true);
 				nonPolPane.setVisible(false);
 				aromPane.setVisible(false);
+				negChPane.setVisible(false);
+				posChPane.setVisible(false);
 			}
 		}
 		ActionListener polListener = new PolListener();
@@ -95,24 +142,43 @@ public class AminoAcidFrame extends AmAcidFrame {
 				aromPane.setVisible(true);
 				polPane.setVisible(false);
 				nonPolPane.setVisible(false);
+				negChPane.setVisible(false);
+				posChPane.setVisible(false);
 			}
 		}
 		ActionListener aromListener = new AromListener();
 		aromButton.addActionListener(aromListener);
 
-		frame.setLayout(null);
+		class PosChListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				posChPane.setVisible(true);
+				polPane.setVisible(false);
+				nonPolPane.setVisible(false);
+				aromPane.setVisible(false);
+				negChPane.setVisible(false);
+			}
+		}
+		ActionListener posChListener = new PosChListener();
+		posChButton.addActionListener(posChListener);
+
+		class NegChListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				negChPane.setVisible(true);
+				polPane.setVisible(false);
+				nonPolPane.setVisible(false);
+				aromPane.setVisible(false);
+				posChPane.setVisible(false);
+			}
+		}
+		ActionListener negChListener = new NegChListener();
+		negChButton.addActionListener(negChListener);
 		frame.pack();
-		frame.setVisible(true);
-	}
+		}
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					createGUI();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					createGUI1();
 			}
 		});
 	}
