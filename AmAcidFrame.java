@@ -3,6 +3,7 @@ package project;
 import java.awt.*;
 
 import javax.swing.*;
+
 @SuppressWarnings("serial")
 public class AmAcidFrame extends JFrame {
 
@@ -12,8 +13,8 @@ public class AmAcidFrame extends JFrame {
 	public AmAcidPane addAmAcidPane(AmAcidFrame frame) {
 		final AmAcidPane pane = new AmAcidPane();
 		pane.setBackground(Color.WHITE);
-		pane.setSize(700, 500);
-		pane.setLocation(25, 100);
+		pane.setSize(650, 500);
+		pane.setLocation(20, 100);
 		pane.setLayout(null);
 		pane.setVisible(false);
 		frame.add(pane);
