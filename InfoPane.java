@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.swing.*;
 
 
+@SuppressWarnings("serial")
 public class InfoPane extends JPanel{
 	
 	public void fillInfo(String path, InfoPane pane) throws IOException{
@@ -16,15 +17,14 @@ public class InfoPane extends JPanel{
 	        in.close();
 	        
 	// создается и заполняется JTextArea в pane     
-	        JTextArea tArea = new JTextArea("Glycine\n");
-	        tArea.setSize(100, 100);
-	        tArea.setLocation(10, 10);
-	        tArea.setVisible(true);
-	        tArea.setEditable(false);
-	        tArea.append(String.valueOf(arr, 0, read));	        
-	        pane.add(tArea);	
+	        JTextPane t = new JTextPane();
+	        t.setSize(230, 600);
+	        t.setLocation(10, 10);
+	        t.setVisible(true);
+	        t.setLayout(null);
+	  //      tArea.setEditable(false);
+	        t.setText(String.valueOf(arr, 0, read));	        
+	        pane.add(t);	
 	}
 }
-			
 	
-
